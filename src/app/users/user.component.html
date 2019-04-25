@@ -1,0 +1,52 @@
+<div class='panel panel-primary'>
+    
+	<div class='panel-heading'>
+      User Details
+	</div>
+	<div class='panel-body'>		
+		<table class="table" style="margin-left:20px">
+		  <tr>
+			<td>ID:</td>
+			<td>{{user.id}}</td>
+		  </tr>
+		  <tr>
+			<td>Name:</td>
+			<td>{{user.name}}</td>
+		  </tr>
+		  <tr>
+			<td>Description:</td>
+			<td>{{user.description}}</td>
+		  </tr>
+		  <tr>
+			<td>Start Date:</td>
+			<td>{{user.startDate}}</td>
+		  </tr>
+		  <tr>
+			<td>End Date:</td>
+			<td>{{user.endDate}}</td>
+		  </tr>
+		  <tr>
+			<td>Status:</td>
+			<td>{{user.status}}</td>
+		  </tr>
+		  <tr>
+			<td>No. of Teams:</td>
+			<td>{{user.noOfTeams}}</td>
+		  </tr>
+		  <tr>
+			<td>Max Team Size:</td>
+			<td>{{user.maxTeamSize}}</td>
+		  </tr>
+		  <tr>
+			<td>Prizes:</td>
+			<td>{{user.prizes}}</td>
+		  </tr>
+		  <tr>
+			<td>Hackathon Host:</td>
+			<td>{{user.hackathonHost}}</td>
+		  </tr>
+		 
+		</table>
+		<button (click)="goBack()">Back</button>
+	</div>
+</div>

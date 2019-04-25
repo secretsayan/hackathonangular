@@ -1,0 +1,15 @@
+<nav>
+	
+    <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" style="margin:15px;">About</a>
+    <span *ngIf='isLoggedIn'>
+			<span>Hi {{firstName}}!</span>
+			<a routerLink="events" routerLinkActive="active" *ngIf='isLoggedIn' style="margin:15px;">Events</a>
+			<a href='' (click)='logOut()'  style="margin:15px;">Logout</a>
+	</span>
+	<span *ngIf='!isLoggedIn'>	
+		<a routerLink="login" routerLinkActive="active" *ngIf='!isLoggedIn' style="margin:15px;">Login</a>	
+		<a routerLink="signup" routerLinkActive="active" *ngIf='!isLoggedIn' style="margin:15px;">SignUp</a>
+	</span>
+</nav>
+<router-outlet></router-outlet>
+

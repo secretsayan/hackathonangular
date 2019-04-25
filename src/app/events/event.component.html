@@ -1,0 +1,52 @@
+<div class='panel panel-primary'>
+    
+	<div class='panel-heading'>
+      Event Details
+	</div>
+	<div class='panel-body'>		
+		<table class="table" style="margin-left:20px">
+		  <tr>
+			<td>ID:</td>
+			<td>{{event.id}}</td>
+		  </tr>
+		  <tr>
+			<td>Name:</td>
+			<td>{{event.name}}</td>
+		  </tr>
+		  <tr>
+			<td>Description:</td>
+			<td>{{event.description}}</td>
+		  </tr>
+		  <tr>
+			<td>Start Date:</td>
+			<td>{{event.startDate}}</td>
+		  </tr>
+		  <tr>
+			<td>End Date:</td>
+			<td>{{event.endDate}}</td>
+		  </tr>
+		  <tr>
+			<td>Status:</td>
+			<td>{{event.status}}</td>
+		  </tr>
+		  <tr>
+			<td>No. of Teams:</td>
+			<td>{{event.noOfTeams}}</td>
+		  </tr>
+		  <tr>
+			<td>Max Team Size:</td>
+			<td>{{event.maxTeamSize}}</td>
+		  </tr>
+		  <tr>
+			<td>Prizes:</td>
+			<td>{{event.prizes}}</td>
+		  </tr>
+		  <tr>
+			<td>Hackathon Host:</td>
+			<td>{{event.hackathonHost}}</td>
+		  </tr>
+		 
+		</table>
+		<button (click)="goBack()">Back</button>
+	</div>
+</div>

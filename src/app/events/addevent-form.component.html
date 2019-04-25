@@ -1,0 +1,82 @@
+<div class='panel panel-primary'>    
+	<div class='panel-heading'>
+		{{title}}
+	</div>
+	<div class='panel-body'>    
+		<form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+			<div class="form-group">
+			  <label for="name">Name</label>
+			  <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required minlength="3" #nameRef="ngModel">
+			  <div *ngIf="nameRef.invalid && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
+				<div *ngIf="nameRef.errors.required">
+				  Name of the event is required.
+				</div>
+				<div *ngIf="nameRef.errors.minlength">
+				  Name must be at least 3 characters long.
+				</div>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="description">Description</label>
+			  <input type="text" class="form-control" id="description" name="description" [(ngModel)]="description" required minlength="3" #descRef="ngModel">
+			  <div *ngIf="descRef.invalid && (descRef.dirty || descRef.touched)" class="alert alert-danger">
+				<div *ngIf="descRef.errors.required">
+				  Description is required.
+				</div>
+				<div *ngIf="descRef.errors.minlength">
+				  Description must be at least 3 characters long.
+				</div>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="startDate">Start Date</label>
+			  <input type="date" placeholder="dd-MMM-yyyy" class="form-control" id="startDate" name="startDate" [(ngModel)]="startDate" required #startDateRef="ngModel">
+			  <div *ngIf="startDateRef.invalid && (startDateRef.dirty || startDateRef.touched)" class="alert alert-danger">
+				<div *ngIf="startDateRef.errors.required">
+				  Start Date is required.
+				</div>
+				<div *ngIf="startDateRef.errors.createdDate">
+				  Start Date is invalid.
+				</div>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="endDate">End Date</label>
+			  <input type="date" placeholder="dd-MMM-yyyy" class="form-control" id="endDate" name="endDate" [(ngModel)]="resolvedDate" #endDateRef="ngModel">
+			  <div *ngIf="endDateRef.invalid && (endDateRef.dirty || endDateRef.touched)" class="alert alert-danger">
+				
+				<div *ngIf="endDateRef.errors.date">
+				  End Date is invalid.
+				</div>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="status">Status</label>
+			  <select class="form-control" name="status" [ngModel]="statuses[0]">
+				<option *ngFor="let status of statuses" [value]="status">
+				  {{status}}
+				</option>
+			  </select>
+			</div>
+			<div class="form-group">
+			  <label for="noOfTeams">No. of Teams</label>          
+			  <input type="number" class="form-control" id="noOfTeams" name="noOfTeams" [(ngModel)]="noOfTeams">			  
+			</div>
+			<div class="form-group">
+			  <label for="maxTeamSize">Max Team Size</label>          
+			  <input type="number" class="form-control" id="maxTeamSize" name="maxTeamSize" [(ngModel)]="maxTeamSize">			  
+			</div>
+			<div class="form-group">
+			  <label for="prizes">Prizes</label>          
+			  <input type="number" class="form-control" id="prizes" name="prizes" [(ngModel)]="prizes">			  
+			</div>
+			<div class="form-group">
+			  <label for="hackathonHost">Hackathon Host (Email)</label>          
+			  <input type="email" class="form-control" id="hackathonHost" name="hackathonHost" [(ngModel)]="hackathonHost">			  
+			</div>
+			
+			<button type="submit" class="btn btn-info" [disabled]="formRef.invalid">Submit</button>
+			
+		</form>    
+	</div>
+</div>
