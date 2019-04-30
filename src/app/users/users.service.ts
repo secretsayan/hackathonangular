@@ -1,7 +1,9 @@
 import { Injectable} from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
+import { User } from '../models/User';
+
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from "moment";
@@ -9,15 +11,21 @@ import * as moment from "moment";
 @Injectable()
 
 export class UsersService{
-	private _usersUrl = "user";
+	private _usersUrl = "http://localhost:3000/user";
 	private httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
 	};
+
+	private currentUserSubject: BehaviorSubject<User>;
+    public currentUser: Observable<User>;
   
 	constructor (private _http: HttpClient) { 
 		console.log("Initializing Users service ...");
+		this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUser = this.currentUserSubject.asObservable();
+		
 	}
 
 	loginUser(userInfo: any, isAdmin: boolean) {
@@ -60,6 +68,8 @@ export class UsersService{
 		
 		const expiresAt = moment().add(authResult.expiresIn,'second');
 		//console.log(authResult.firstname);	
+		localStorage.setItem('currentUser', JSON.stringify(authResult));
+		//this.currentUserSubject.next(authResult);
 		localStorage.setItem('firstname', authResult.firstname);
 		localStorage.setItem('email', authResult.idToken);
         localStorage.setItem('id_token', authResult.idToken);

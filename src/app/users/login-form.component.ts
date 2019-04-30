@@ -39,7 +39,7 @@ export class LoginFormComponent {
 			}
 		  ]);*/
 		  this.router.navigate(['events']);
-		  window.location.reload();
+		  //window.location.reload();
 		});    
 	} 
 

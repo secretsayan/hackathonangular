@@ -14,7 +14,7 @@ export class AppComponent {
   
 	constructor(private _userService: UsersService, private router: Router) { }
   
-	ngOnInit() {		
+	ngDoCheck() {		
 		this.isLoggedIn = this._userService.isLoggedIn();
 		this.firstName = this._userService.getFirstName();
 	}

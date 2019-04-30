@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { UsersService } from "./users.service";
-import { User } from "./user";
+import { User } from "../models/user";
 
 @Component({
   selector: 'edituser-form',
