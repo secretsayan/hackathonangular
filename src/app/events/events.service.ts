@@ -9,7 +9,8 @@ export class EventsService {
 	private count=100;
 	private httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+				'Content-Type':  'application/json',
+				"Authorization":"Bearer "+localStorage.getItem("email")				
       })
 	};
   
@@ -34,7 +35,7 @@ export class EventsService {
 
 	getEvent(id: any) {
 		let getEventURL = `${this._eventsUrl}/edit/${id}`;
-		return this._http.get(getEventURL);    
+		return this._http.get(getEventURL,this.httpOptions);    
 	}
 
 	addEvent(newEvent: any) {

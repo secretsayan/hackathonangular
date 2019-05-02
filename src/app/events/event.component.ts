@@ -11,7 +11,7 @@ import { EventsService } from "./events.service";
 })
 export class EventComponent implements OnInit {
     id: any;
-    event: any;
+    event: Event;
     
     constructor(private _eventService: EventsService, private route: ActivatedRoute, private location: Location) {
     }
@@ -20,7 +20,7 @@ export class EventComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             this.id = +params['id'];
         });
-        this.event = this._eventService.getEvent(this.id).subscribe(
+        this._eventService.getEvent(this.id).subscribe(
 			(event:any) =>  this.event = event,
 			err => console.log(err)
 		);		

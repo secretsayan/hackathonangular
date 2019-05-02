@@ -15,7 +15,7 @@ export class EditEventFormComponent {
 	title: string = "Editing an Event";
 	statuses: string[] = ["Open", "In Progress", "Closed"];
 	id: any;
-	event:Event={name:"",description:"",startDate:"",endDate:"",status:"",noOfTeams:"", maxTeamSize:"", prizes:"", hackathonHost:""};
+	event: Event;
 
 	constructor(private _eventService: EventsService, private route: ActivatedRoute, private router: Router) { }
 	

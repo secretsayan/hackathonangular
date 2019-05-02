@@ -37,8 +37,8 @@
             </thead>
             <tbody>
                 <tr *ngFor='let event of events | eventFilter: descriptionFilter'>
-                    <td >{{ event.id }}</td>
-					<td ><a [routerLink]="event.id">{{ event.name }}</a></td>
+                    <td >{{ event.eventId }}</td>
+					<td ><a [routerLink]="event.eventId">{{ event.name }}</a></td>
                     <td >{{ event.description }}</td>
 					<td >{{ event.startDate | date:"dd-MMM-yy" }}</td>
                     <td >{{ event.endDate | date:"dd-MMM-yy" }}</td>
@@ -46,7 +46,7 @@
                     <td >{{ event.noOfTeams }}</td>
                     <td >{{ event.prizes }}</td>
                     <td >{{ event.hackathonHost }}</td>
-                    <td><a [routerLink]="['/editEvent',event.id]" class="btn btn-xs btn-primary">Edit</a></td>
+                    <td><a [routerLink]="['/editEvent',event.eventId]" class="btn btn-xs btn-primary">Edit</a></td>
                     <td><a (click)="deleteEvent(event.id)" class="btn btn-xs btn-danger">Delete</a><input style="margin-left: 5px;" type="checkbox" (click)="stateChanged($event,event.id)"  ></td>
                 </tr>
             </tbody>
