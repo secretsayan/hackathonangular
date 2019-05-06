@@ -5,7 +5,7 @@ import { Init } from "./initial-events";
 @Injectable()
 
 export class EventsService {
-	private _eventsUrl = "http://localhost:3000/event";
+	private _eventsUrl = "event";
 	private count=100;
 	private httpOptions = {
       headers: new HttpHeaders({
@@ -45,13 +45,13 @@ export class EventsService {
 	}
 
 	updateEvent(updatedEvent: any) {
-		let updateEventURL = `${this._eventsUrl}/edit/${updatedEvent.id}`;
+		let updateEventURL = `${this._eventsUrl}/edit/${updatedEvent.eventId}`;
 		return this._http.post(updateEventURL, updatedEvent, this.httpOptions);
 	}
 
 	deleteEvent(id: any) {
 		let deleteEventURL = `${this._eventsUrl}/delete/${id}`;
 		console.log(deleteEventURL);
-		return this._http.get(deleteEventURL);
+		return this._http.delete(deleteEventURL,this.httpOptions);
 	}
 }

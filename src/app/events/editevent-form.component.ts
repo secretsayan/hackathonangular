@@ -14,7 +14,7 @@ export class EditEventFormComponent {
 	
 	title: string = "Editing an Event";
 	statuses: string[] = ["Open", "In Progress", "Closed"];
-	id: any;
+	id: number;
 	event: Event;
 
 	constructor(private _eventService: EventsService, private route: ActivatedRoute, private router: Router) { }
@@ -27,14 +27,18 @@ export class EditEventFormComponent {
 		  this.id = +params['id'];
 		});
 		this._eventService.getEvent(this.id).subscribe(
-		(ev:any) => {this.event = ev;console.log(this.event);}       
+		(ev:any) => {
+			ev.startDate = new Date(ev.startDate).toISOString().split('T')[0];
+			ev.endDate = new Date(ev.endDate).toISOString().split('T')[0];
+			this.event = ev;console.log(this.event);
+		}       
 		);  
 	}
 
 	onSubmit(formValue: any){
 		console.log("Form Value = " + JSON.stringify(formValue, null, 4));
 		let updatedEvent = {
-			  id: this.id,
+			  eventId: this.id,
 			  name: formValue.name,
 			  description: formValue.description,
 			  startDate: formValue.startDate,

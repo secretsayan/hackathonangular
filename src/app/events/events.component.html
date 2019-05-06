@@ -47,7 +47,7 @@
                     <td >{{ event.prizes }}</td>
                     <td >{{ event.hackathonHost }}</td>
                     <td><a [routerLink]="['/editEvent',event.eventId]" class="btn btn-xs btn-primary">Edit</a></td>
-                    <td><a (click)="deleteEvent(event.id)" class="btn btn-xs btn-danger">Delete</a><input style="margin-left: 5px;" type="checkbox" (click)="stateChanged($event,event.id)"  ></td>
+                    <td><a (click)="deleteEvent(event.eventId)" class="btn btn-xs btn-danger">Delete</a><input style="margin-left: 5px;" type="checkbox" (click)="stateChanged($event,event.id)"  ></td>
                 </tr>
             </tbody>
         </table>

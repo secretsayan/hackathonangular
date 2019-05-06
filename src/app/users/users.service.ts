@@ -11,7 +11,7 @@ import * as moment from "moment";
 @Injectable()
 
 export class UsersService{
-	private _usersUrl = "http://localhost:3000/user";
+	private _usersUrl = "user";
 	private httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
