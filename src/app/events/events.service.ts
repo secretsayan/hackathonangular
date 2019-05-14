@@ -5,7 +5,7 @@ import { Init } from "./initial-events";
 @Injectable()
 
 export class EventsService {
-	private _eventsUrl = "event";
+	private _eventsUrl = "http://localhost:3000/event";
 	private count=100;
 	private httpOptions = {
       headers: new HttpHeaders({

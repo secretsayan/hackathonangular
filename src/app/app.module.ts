@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppComponent }  from './app.component';
 import { routing }  from './app.routing';
 
@@ -26,7 +29,7 @@ import { EventsService } from './events/events.service';
 
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, HttpModule, HttpClientModule, routing ],
+  imports: [ BrowserModule, FormsModule, HttpModule, HttpClientModule, routing,  ToastrModule.forRoot()],
   declarations: [ 
 			AppComponent, 
 			AboutComponent, 

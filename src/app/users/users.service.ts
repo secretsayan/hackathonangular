@@ -11,7 +11,7 @@ import * as moment from "moment";
 @Injectable()
 
 export class UsersService{
-	private _usersUrl = "user";
+	private _usersUrl = "http://localhost:3000/user";
 	private httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
@@ -78,7 +78,6 @@ export class UsersService{
 	}        
 	
 	public getFirstName() {
-		console.log(localStorage.getItem("firstname"));
 		return localStorage.getItem("firstname");
 	}
 
@@ -86,7 +85,7 @@ export class UsersService{
 		return localStorage.getItem("email");
 	}
 
-    logout() {
+    public logout() {
 		localStorage.removeItem("id_token");
 		localStorage.removeItem("firstname");
 		localStorage.removeItem("email");
@@ -97,11 +96,11 @@ export class UsersService{
         return moment().isBefore(this.getExpiration());
     }
 
-    isLoggedOut() {
+    public isLoggedOut() {
         return !this.isLoggedIn();
     }
 
-    getExpiration() {
+    public getExpiration() {
         const expiration = localStorage.getItem("expires_at");
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);

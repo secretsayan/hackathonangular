@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { UsersService } from "./users.service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'login-form',
@@ -13,7 +14,7 @@ export class LoginFormComponent {
 	title: string = "User Login";	
 	isAdmin: boolean = false;
 	
-	constructor(private _userService: UsersService, private router: Router) { }
+	constructor(private _userService: UsersService, private router: Router, private toastr: ToastrService) { }
 	
 	stateChanged(e: any) {    
 		if(e.target.checked) {
@@ -30,17 +31,24 @@ export class LoginFormComponent {
 			  email: formValue.email,
 			  password: formValue.password			  	  
 			};
-		this._userService.loginUser(userInfo, this.isAdmin).subscribe(val => {
-			/*let val[] = val.split("token=");
-			localStorage.setItem('loggedUser',JSON.stringify([
-			{
-			  "email": formValue.email,
-			  "password": val[1]			  
+		this._userService.loginUser(userInfo, this.isAdmin).subscribe(
+			val => {
+				this.router.navigate(['events']);
+				this.showToaster("loggedin");
+			},
+			err => {
+				this.showToaster("log in Failed");
 			}
-		  ]);*/
-		  this.router.navigate(['events']);
-		  //window.location.reload();
-		});    
-	} 
+		); 
+	}
+	
+	showToaster(loggedin){
+		if(loggedin == "loggedin"){
+			this.toastr.success("Successfully Logged In");
+		}else{
+			this.toastr.error("Invalid Credentials");
+		}
+		
+	}
 
 }

@@ -27,6 +27,7 @@
     "core-js": "^2.6.5",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
+    "ngx-toastr": "^10.0.2",
     "rxjs": "6.0.0",
     "rxjs-compat": "6.3.3",
     "zone.js": "^0.8.29"
