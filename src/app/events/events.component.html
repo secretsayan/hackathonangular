@@ -46,12 +46,15 @@
                     <td >{{ event.noOfTeams }}</td>
                     <td >{{ event.prizes }}</td>
                     <td >{{ event.hackathonHost }}</td>
-                    <td><a [routerLink]="['/editEvent',event.eventId]" class="btn btn-xs btn-primary">Edit</a></td>
-                    <td><a (click)="deleteEvent(event.eventId)" class="btn btn-xs btn-danger">Delete</a><input style="margin-left: 5px;" type="checkbox" (click)="stateChanged($event,event.id)"  ></td>
+                    <td ><a *ngIf="userRole != 'admin'" [routerLink]="['/registration',event.eventId]" class="btn btn-xs btn-primary">Register</a></td>
+                    <td><a *ngIf="userRole == 'admin'" [routerLink]="['/editEvent',event.eventId]" class="btn btn-xs btn-primary">Edit</a></td>
+                    <td><a *ngIf="userRole == 'admin'" (click)="deleteEvent(event.eventId)" class="btn btn-xs btn-danger">Delete</a>
+                        <input *ngIf="userRole == 'admin' " style="margin-left: 5px;" type="checkbox" (click)="stateChanged($event,event.eventId)">
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <a routerLink="/addEvent" class="btn btn-xs btn-primary">Add Event</a>
-        <a (click)="bulkDelete()" class="btn btn-xs btn-danger pull-right">Bulk Delete</a>
+        <a *ngIf="userRole == 'admin'" routerLink="/addEvent" class="btn btn-xs btn-primary">Add Event</a>
+        <a *ngIf="userRole == 'admin'" (click)="bulkDelete()" class="btn btn-xs btn-danger pull-right">Bulk Delete</a>
     </div>
 </div>

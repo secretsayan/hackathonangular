@@ -25,6 +25,8 @@ import { AddEventFormComponent } from './events/addevent-form.component';
 import { EditEventFormComponent } from './events/editevent-form.component';
 import { EventFilterPipe } from './events/events-filter.pipe';
 import { EventsService } from './events/events.service';
+import { RegistrationComponent } from './registration/registration.component';
+import { RegistrationService } from './registration/registration.service';
 
 
 
@@ -43,8 +45,9 @@ import { EventsService } from './events/events.service';
 			EventComponent,
 			AddEventFormComponent, 
 			EditEventFormComponent, 
+			RegistrationComponent,
 			EventFilterPipe ],
-  providers: [ UsersService, EventsService ],
+  providers: [ UsersService, EventsService, RegistrationService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

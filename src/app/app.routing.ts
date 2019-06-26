@@ -10,6 +10,7 @@ import { EventsComponent } from './events/events.component';
 import { EventComponent } from './events/event.component';
 import { AddEventFormComponent } from './events/addevent-form.component';
 import { EditEventFormComponent } from './events/editevent-form.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 const appRoutes: Routes = [
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
   { path: 'events', component: EventsComponent },
   { path: 'events/:id', component: EventComponent },
   { path: 'addEvent', component: AddEventFormComponent},
-  { path: 'editEvent/:id', component: EditEventFormComponent}
+  { path: 'editEvent/:id', component: EditEventFormComponent},
+  { path: 'registration/:id', component: RegistrationComponent},
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

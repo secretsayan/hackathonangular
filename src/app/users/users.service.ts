@@ -72,7 +72,8 @@ export class UsersService{
 		//this.currentUserSubject.next(authResult);
 		localStorage.setItem('firstname', authResult.firstname);
 		localStorage.setItem('email', authResult.idToken);
-        localStorage.setItem('id_token', authResult.idToken);
+		localStorage.setItem('id_token', authResult.idToken);
+		localStorage.setItem('role', authResult.role);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
 		
 	}        
@@ -83,6 +84,10 @@ export class UsersService{
 
 	public getEmail() {
 		return localStorage.getItem("email");
+	}
+
+	public getRole(){
+		return localStorage.getItem("role");
 	}
 
     public logout() {

@@ -13,14 +13,15 @@ export class EventsComponent {
   title = "List of Events";
   events: Event[];
   descriptionFilter: String;
+  userRole: any;
  
-
   selectedEvents: any[] = [];
  
   constructor(private _userService: UsersService, private _eventService: EventsService, private router: Router) { }
 
   ngOnInit() {
 	if(this._userService.isLoggedIn()) {
+    this.userRole = this._userService.getRole();
 		this.getEvents();
 	} else {
 		this.router.navigate(['login']);
@@ -44,7 +45,7 @@ export class EventsComponent {
   
 
   stateChanged(e: any,id:any) {
-    
+     
     if(e.target.checked) {
       if(this.selectedEvents.indexOf(id)==-1) {
         this.selectedEvents.push(id);
