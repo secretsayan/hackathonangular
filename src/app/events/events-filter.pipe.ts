@@ -5,6 +5,6 @@ export class EventFilterPipe implements PipeTransform {
     transform(value: any[], args: string): any[] {
         let filter: string = args ? args.toLocaleLowerCase() : null;
         return filter ? value.filter((event) =>
-            event.description.toLocaleLowerCase().startsWith(filter) != false) : value;
+            event.name.toLocaleLowerCase().includes(filter) != false ) : value;
     }
 }
