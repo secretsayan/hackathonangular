@@ -22,21 +22,27 @@ export class EventsComponent {
 
   ngOnInit() {
     if (this._userService.isLoggedIn()) {
+      // Get role of the logged in user
       this.userRole = this._userService.getRole();
+      // Get registrations of the logged in user
       this._userService.getRegistrations().subscribe((registration: any) => {
-        this.userReg = registration.map(reg =>{
-          return reg.eventId;
+        this.userReg = registration.map(reg => {
+          return parseInt(reg.eventId);
         });
       });
+      // Get events
       this.getEvents();
     } else {
+      // Redirect to Login page
       this.router.navigate(['login']);
     }
   }
 
   getEvents() {
     this._eventService.getEvents().subscribe(
-      (events: any) => this.events = events,
+      (events: any) => {
+        this.events = events;
+      },
       err => console.log(err)
     );
   }

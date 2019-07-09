@@ -20,13 +20,11 @@
                 <tr *ngFor='let reg of regs'>
                     <td >{{ reg.regId }}</td>
                     <td ><a [routerLink]="reg.regId">{{ reg.teamName }}</a></td>
-                    <td >{{ reg.teamMembers }}</td>
+                    <td >{{ reg.teamDescription }}</td>
                     <td >{{ reg.teamMembers }}</td>
                 </tr>
             </tbody>
         </table>
-        <a *ngIf="userRole == 'admin'" routerLink="/addEvent" class="btn btn-xs btn-primary">Add Event</a>
-        <a *ngIf="userRole == 'admin'" (click)="bulkDelete()" class="btn btn-xs btn-danger pull-right">Bulk Delete</a>
     </div>
 </div>
 

@@ -24,13 +24,14 @@ export class RegistrationComponent implements OnInit {
     }
     ngOnInit() {
         this._userService.getAllUsers().subscribe((user: any) => {
-            console.log(user);
             var newUser = user.filter(item => {
-            var  userEmail = this._userService.getEmail();
+                var userEmail = this._userService.getEmail();
                 return item.email != "admin@hack.com" && item.email != userEmail;
             });
-            console.log(newUser);
-            this.members = newUser;
+
+            this.members = newUser.map( (item) => {
+                return item.fullname = item.firstname + " " + item.lastname;
+            });
         });
 
     }

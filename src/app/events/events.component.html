@@ -38,7 +38,7 @@
             <tbody>
                 <tr *ngFor='let event of events | eventFilter: descriptionFilter'>
                     <td>{{ event.eventId }}</td>
-                    <td><a [routerLink]="event.eventId">{{ event.name }}</a></td>
+                    <td>{{ event.name }}</td>
                     <td>{{ event.description }}</td>
                     <td>{{ event.startDate | date:"dd-MMM-yy" }}</td>
                     <td>{{ event.endDate | date:"dd-MMM-yy" }}</td>
