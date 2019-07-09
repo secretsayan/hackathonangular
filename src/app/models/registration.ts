@@ -1,8 +1,7 @@
 export interface Registration{
     regId: number;
-    eventID: number;
+    eventID: string;
     teamName: string;
     teamdescription: string;
-    teamMembers:
-
+    teamMembers: string;
 }

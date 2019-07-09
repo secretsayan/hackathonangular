@@ -24,6 +24,7 @@
     "@angular/platform-browser": "^6.1.10",
     "@angular/platform-browser-dynamic": "^6.1.10",
     "@angular/router": "^6.1.10",
+    "@ng-select/ng-select": "^2.20.1",
     "core-js": "^2.6.5",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",

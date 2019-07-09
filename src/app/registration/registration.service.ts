@@ -1,56 +1,55 @@
-import { Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 
 export class RegistrationService {
-	private _eventsUrl = "http://localhost:3000/event";
-	private count=100;
-	private httpOptions = {
-      headers: new HttpHeaders({
-				'Content-Type':  'application/json',
-				"Authorization":"Bearer "+localStorage.getItem("email")				
-      })
-	};
-  
-	constructor (private _http: HttpClient) { 
-		console.log("Initializing Events service ...");
-	}
+    private _regUrl = "http://localhost:3000/reg";
+    private count = 100;
+    private httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("email")
+        })
+    };
 
-	getEventCount() {
-		let eventss = this._http.get(`${this._eventsUrl}/all`).subscribe(
-		  (events:any) =>  eventss = events,
-		  err => console.log(err)
-		);
-		if(eventss)
-		  return eventss.length;
-		else
-		  return 0;
-	}
+    constructor(private _http: HttpClient) {
+        console.log("Initializing Events service ...");
+    }
 
-	getEvents() {
-		return this._http.get(`${this._eventsUrl}/all`);
-	}
+    getRegCount() {
+        let regs = this._http.get(`${this._regUrl}/all`).subscribe(
+            (reg: any) => regs = reg,
+            err => console.log(err)
+        );
+        if (regs)
+            return regs.length;
+        else
+            return 0;
+    }
 
-	getEvent(id: any) {
-		let getEventURL = `${this._eventsUrl}/edit/${id}`;
-		return this._http.get(getEventURL,this.httpOptions);    
-	}
+    getAllReg() {
+        return this._http.get(`${this._regUrl}/all`);
+    }
 
-	addEvent(newEvent: any) {
-		this.count++;
-		let addEventURL = `${this._eventsUrl}/add`;
-		return this._http.post(addEventURL, newEvent, this.httpOptions);
-	}
+    getReg(id: any) {
+        let getEventURL = `${this._regUrl}/view/${id}`;
+        return this._http.get(getEventURL, this.httpOptions);
+    }
 
-	updateEvent(updatedEvent: any) {
-		let updateEventURL = `${this._eventsUrl}/edit/${updatedEvent.eventId}`;
-		return this._http.post(updateEventURL, updatedEvent, this.httpOptions);
-	}
+    addReg(newReg: any) {
+        let addRegURL = `${this._regUrl}/add`;
+        return this._http.post(addRegURL, newReg, this.httpOptions);
+    }
 
-	deleteEvent(id: any) {
-		let deleteEventURL = `${this._eventsUrl}/delete/${id}`;
-		console.log(deleteEventURL);
-		return this._http.delete(deleteEventURL,this.httpOptions);
-	}
+    updateReg(updatedEvent: any) {
+        let updateEventURL = `${this._regUrl}/edit/${updatedEvent.eventId}`;
+        return this._http.post(updateEventURL, updatedEvent, this.httpOptions);
+    }
+
+    deleteReg(id: any) {
+        let deleteEventURL = `${this._regUrl}/delete/${id}`;
+        console.log(deleteEventURL);
+        return this._http.delete(deleteEventURL, this.httpOptions);
+    }
 }

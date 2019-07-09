@@ -1,5 +1,5 @@
 <div class='panel panel-primary'>
-    
+
     <div class='panel-heading'>
         {{title}}
     </div>
@@ -7,7 +7,7 @@
         <div class='row'>
             <div class='col-md-1'>Filter by:</div>
             <div class='col-md-3'>
-                <input type='text' [(ngModel)]='descriptionFilter' class="form-control"/>
+                <input type='text' [(ngModel)]='descriptionFilter' class="form-control" />
             </div>
             <!--<div class='col-md-1'>Show Fields:</div>
             <div class='col-md-5'>
@@ -23,34 +23,42 @@
             <thead>
                 <tr>
                     <th style="min-width: 80px;">Event#</th>
-					<th style="min-width: 80px;">Name</th>
-                    <th style="min-width: 80px;">Description</th>                    
+                    <th style="min-width: 80px;">Name</th>
+                    <th style="min-width: 80px;">Description</th>
                     <th style="min-width: 100px;">Start Date</th>
                     <th style="min-width: 60px;">End Date</th>
                     <th style="min-width: 80px;">Status</th>
-					<th style="min-width: 80px;">Teams</th>
+                    <th style="min-width: 80px;">Teams</th>
                     <th style="min-width: 80px;">Prizes</th>
-					<th style="min-width: 80px;">Host</th>
+                    <th style="min-width: 80px;">Host</th>
                     <th style="width:20px;"> </th>
                     <th style="width:80px;"> </th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor='let event of events | eventFilter: descriptionFilter'>
-                    <td >{{ event.eventId }}</td>
-					<td ><a [routerLink]="event.eventId">{{ event.name }}</a></td>
-                    <td >{{ event.description }}</td>
-					<td >{{ event.startDate | date:"dd-MMM-yy" }}</td>
-                    <td >{{ event.endDate | date:"dd-MMM-yy" }}</td>
-					<td >{{ event.status }}</td>
-                    <td >{{ event.noOfTeams }}</td>
-                    <td >{{ event.prizes }}</td>
-                    <td >{{ event.hackathonHost }}</td>
-                    <td ><a *ngIf="userRole != 'admin'" [routerLink]="['/registration',event.eventId]" class="btn btn-xs btn-primary">Register</a></td>
-                    <td><a *ngIf="userRole == 'admin'" [routerLink]="['/editEvent',event.eventId]" class="btn btn-xs btn-primary">Edit</a></td>
-                    <td><a *ngIf="userRole == 'admin'" (click)="deleteEvent(event.eventId)" class="btn btn-xs btn-danger">Delete</a>
-                        <input *ngIf="userRole == 'admin' " style="margin-left: 5px;" type="checkbox" (click)="stateChanged($event,event.eventId)">
+                    <td>{{ event.eventId }}</td>
+                    <td><a [routerLink]="event.eventId">{{ event.name }}</a></td>
+                    <td>{{ event.description }}</td>
+                    <td>{{ event.startDate | date:"dd-MMM-yy" }}</td>
+                    <td>{{ event.endDate | date:"dd-MMM-yy" }}</td>
+                    <td>{{ event.status }}</td>
+                    <td>{{ event.noOfTeams }}</td>
+                    <td>{{ event.prizes }}</td>
+                    <td>{{ event.hackathonHost }}</td>
+                    <td *ngIf="userRole != 'admin' && userReg.indexOf(event.eventId) == -1"><a
+                            [routerLink]="['/registration',event.eventId]" class="btn btn-xs btn-primary">Register</a>
                     </td>
+                    <td *ngIf="userReg.indexOf(event.eventId) > -1" class="btn btn-success">Registered</td>
+                    <td *ngIf="userRole == 'admin'"><a [routerLink]="['/editEvent',event.eventId]"
+                            class="btn btn-xs btn-primary">Edit</a></td>
+                    <td *ngIf="userRole == 'admin'"><a (click)="deleteEvent(event.eventId)"
+                            class="btn btn-xs btn-danger">Delete</a>
+                        <input *ngIf="userRole == 'admin' " style="margin-left: 5px;" type="checkbox"
+                            (click)="stateChanged($event,event.eventId)">
+                    </td>
+                    <td *ngIf="userRole == 'admin'"><a [routerLink]="['/registration/view',event.eventId]"
+                            class="btn btn-xs btn-primary">View Registrations</a></td>
                 </tr>
             </tbody>
         </table>
